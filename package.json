@@ -1,6 +1,6 @@
 {
   "name": "react-multidecorator",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Combine decorators for stateless components",
   "files": [
     "dist",
