@@ -1,11 +1,8 @@
 import expect from 'expect';
-import expectJSX from 'expect-jsx';
-import React, {Component, Children, PropTypes} from 'react';
+import React, {Component} from 'react';
 import TestUtils from 'react-addons-test-utils';
 
 import multidecorator from '../src/decorator';
-
-expect.extend(expectJSX);
 
 describe('react-multidecorator', ()=> {
 
@@ -15,40 +12,42 @@ describe('react-multidecorator', ()=> {
         }
     }
 
-    const decorator = (Wrapped) => {
-        class Decorator extends Component {
-            render() {
-                return (
-                    <Wrapper>
-                        <Wrapped/>
-                    </Wrapper>
-                )
+    const decorator = (order) =>
+        (Wrapped) => {
+            class Decorator extends Component {
+                render() {
+                    return (
+                        <Wrapper order={order}>
+                            <Wrapped/>
+                        </Wrapper>
+                    )
+                }
             }
-        }
 
-        return Decorator;
-    };
+            return Decorator;
+        };
 
-    it('should decorate component', ()=> {
+    it('should decorate component with multiple decorators in right order', ()=> {
         let Wrapped = () =>(
             <div/>
         );
 
         const Decorated = multidecorator(
-            decorator
+            decorator(0),
+            decorator(1),
+            decorator(2)
         )(Wrapped);
 
-        const renderer = TestUtils.createRenderer();
+        const tree = TestUtils.renderIntoDocument(
+            <Decorated/>
+        )
 
-        renderer.render(<Decorated/>);
+        const elements = TestUtils.scryRenderedComponentsWithType(tree, Wrapper);
 
-        const result = renderer.getRenderOutput();
+        expect(elements.length).toEqual(3);
 
-        expect(result)
-            .toEqualJSX(
-                <Wrapper>
-                    <Wrapped/>
-                </Wrapper>
-            )
+        elements.forEach((element, i)=>
+            expect(element.props.order).toEqual(i)
+        );
     });
 });

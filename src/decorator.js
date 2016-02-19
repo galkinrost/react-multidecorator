@@ -1,6 +1,7 @@
 const decorator = (...decorators) => {
     return (Wrapped)=> {
-        return decorators.reduce((WrappedComponent, decorator)=> decorator(WrappedComponent) , Wrapped);
+        return decorators.reverse()
+            .reduce((WrappedComponent, decorator)=> decorator(WrappedComponent), Wrapped);
     }
 };
 

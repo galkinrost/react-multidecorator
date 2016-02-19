@@ -41,7 +41,6 @@
     "cross-env": "1.0.7",
     "es3ify": "0.2.1",
     "expect": "1.14.0",
-    "expect-jsx": "2.3.0",
     "glob": "7.0.0",
     "jsdom": "8.0.2",
     "mocha": "2.4.5",
