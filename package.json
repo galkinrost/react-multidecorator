@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Babo-Ltd/react-multidecorator.git"
+    "url": "git+https://github.com/babotech/react-multidecorator.git"
   },
   "keywords": [
     "react",
@@ -30,9 +30,9 @@
   "author": "Galkin Rostislav <galkinrost@gmail.com> (http://github.com/galkinrost)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Babo-Ltd/react-multidecorator/issues"
+    "url": "https://github.com/babotech/react-multidecorator/issues"
   },
-  "homepage": "https://github.com/Babo-Ltd/react-multidecorator#readme",
+  "homepage": "https://github.com/babotech/react-multidecorator#readme",
   "devDependencies": {
     "babel-cli": "6.5.1",
     "babel-core": "6.5.1",
