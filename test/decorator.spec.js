@@ -1,14 +1,16 @@
-import expect from 'expect';
-import React, {Component} from 'react';
-import TestUtils from 'react-addons-test-utils';
+/* eslint-disable no-magic-numbers */
+import React, {Component} from 'react'
 
-import multidecorator from '../src/decorator';
+import TestUtils from 'react-addons-test-utils'
 
-describe('react-multidecorator', ()=> {
+import expect from 'expect'
+import multidecorator from '../src/decorator'
+
+describe(`react-multidecorator`, () => {
 
     class Wrapper extends Component {
         render() {
-            return this.props.children;
+            return this.props.children
         }
     }
 
@@ -24,30 +26,30 @@ describe('react-multidecorator', ()=> {
                 }
             }
 
-            return Decorator;
-        };
+            return Decorator
+        }
 
-    it('should decorate component with multiple decorators in right order', ()=> {
-        let Wrapped = () =>(
+    it(`should decorate component with multiple decorators in right order`, () => {
+        const Wrapped = () => (
             <div/>
-        );
+        )
 
         const Decorated = multidecorator(
             decorator(0),
             decorator(1),
             decorator(2)
-        )(Wrapped);
+        )(Wrapped)
 
         const tree = TestUtils.renderIntoDocument(
             <Decorated/>
         )
 
-        const elements = TestUtils.scryRenderedComponentsWithType(tree, Wrapper);
+        const elements = TestUtils.scryRenderedComponentsWithType(tree, Wrapper)
 
-        expect(elements.length).toEqual(3);
+        expect(elements.length).toEqual(3)
 
-        elements.forEach((element, i)=>
+        elements.forEach((element, i) =>
             expect(element.props.order).toEqual(i)
-        );
-    });
-});
+        )
+    })
+})

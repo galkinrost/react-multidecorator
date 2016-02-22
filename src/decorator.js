@@ -1,8 +1,8 @@
-const decorator = (...decorators) => {
-    return (Wrapped)=> {
+const multidecorator = (...decorators) => {
+    return (Wrapped) => {
         return decorators.reverse()
-            .reduce((WrappedComponent, decorator)=> decorator(WrappedComponent), Wrapped);
+            .reduce((WrappedComponent, decorator) => decorator(WrappedComponent), Wrapped)
     }
-};
+}
 
-export default decorator;
+export default multidecorator
