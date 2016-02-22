@@ -1,4 +1,4 @@
-# React multidecorator
+# React multidecorator [![Build Status](https://travis-ci.org/babotech/react-multidecorator.svg?branch=master)](https://travis-ci.org/babotech/react-multidecorator)
 
 Combine decorators for stateless components
 
